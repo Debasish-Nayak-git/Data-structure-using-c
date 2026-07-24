@@ -23,7 +23,7 @@ s[0][1]=c;
 s[0][2]=t;
 printf("Triplet of Sparce matrix:\n");
 for(i=0;i<t+1;i++)
-{for (j=+0;j<3;j++)
+{for (j=0;j<3;j++)
 printf("%d ",s[i][j]);
 printf("\n");
 }
