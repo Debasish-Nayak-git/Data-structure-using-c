@@ -8,6 +8,7 @@ printf("enter elements of the matrix\n");
 for(i=0;i<r;i++)
 {for (j=+0;j<c;j++)
 scanf("%d",&mat[i][j]);
+
 }
 for(i=0;i<r;i++)
 {for (j=+0;j<c;j++)
