@@ -7,13 +7,10 @@ void Push()
 printf("Enter the element to be push\n");
 scanf("%d",&item);
 if(top==size-1)
-printf("stack is empty\n");
+printf("stack is full\n");
 else
 {top=top+1;
- s[top]=item;
- printf("Elements of array:\n");
-for(int i=top;i>=0;i--)
- printf("%d ",s[i]);   
+ s[top]=item;      
 }}
 //pop
 void Pop()
@@ -24,16 +21,13 @@ else
 {item=s[top];   
  top=top-1;
  printf("Deleted element:%d\n",item);
- printf("Elements of array:\n");
-for(int i=top;i>=0;i--)
- printf("%d ",s[i]);
 }}
 //display
 void Display()
 {if(top==-1)
 printf("stack is empty\n");
 else
-{printf("Elements of array:\n");
+{printf("Elements of stack:\n");
 for(int i=top;i>=0;i--)
  printf("%d ",s[i]);
 }}
@@ -62,7 +56,7 @@ if (pos<=0 || top-pos+1<0)
 printf("\n changing operation not possible \n");
 else
 s[top-pos+1]=val;
-printf("Content of array:\n");
+printf("Content of stack:\n");
 for(int i=top;i>=0;i--)
  printf("%d ",s[i]);
 }
