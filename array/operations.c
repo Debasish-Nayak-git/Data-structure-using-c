@@ -77,12 +77,12 @@ void insert_index(int a[],int ind){
     scanf("%d",&val);
     if(curr_index>=size || ind>size && ind<0)
     printf("\n Array Overflow");
-    else
+    else{
     for (int i=curr_index;i>=ind;i--)
     {a[i+1]=a[i];
     }a[ind]=val;
     curr_index++;
-}
+}}
 //display
 void Display(int a[]){
     if (curr_index==0)
