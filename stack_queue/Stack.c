@@ -70,16 +70,20 @@ else
 //display
 void Display()
 {if(isEmpty())
-printf("stack is empty\n");
+    printf("stack is empty\n");
 else
-{printf("Elements of stack:\n");
-for(int i=top;i>=0;i--)
- printf("%d ",s[i]);
+    {printf("Elements of stack:\n");
+    for(int i=top;i>=0;i--)
+        printf("%d ",s[i]);
 }}
 
 //Peek
 void Peek()
-{printf("\n peek element=%d\n",s[top]);
+{if(isEmpty())
+    printf("stack is empty\n");
+else
+    printf("\n peek element=%d\n",s[top]);
+
 }
 
 //peep
@@ -88,9 +92,9 @@ void Peep()
 printf("Enter the position\n");
 scanf("%d",&pos);
 if (pos<=0 || top-pos+1<0)
-printf("\n operation not possible \n");
+    printf("\n operation not possible \n");
 else
-printf("copied element=%d\n",s[top-pos+1]);
+    printf("copied element=%d\n",s[top-pos+1]);
 }
 //change
 void Change()
@@ -100,12 +104,12 @@ scanf("%d",&pos);
 printf("Enter value \n");
 scanf("%d",&val);
 if (pos<=0 || top-pos+1<0)
-printf("\n changing operation not possible \n");
+    printf("\n changing operation not possible \n");
 else
-s[top-pos+1]=val;
+    s[top-pos+1]=val;
 printf("Content of stack:\n");
 for(int i=top;i>=0;i--)
- printf("%d ",s[i]);
+    printf("%d ",s[i]);
 }
 int Menu()
 {int ch;
