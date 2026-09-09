@@ -14,68 +14,78 @@ int isEmpty();
 int main()
 {int ch;
 while(1)
-{ch=Menu();
-if(ch!=7){
-switch(ch)
-{case 1:
-   Push();
-   break;
-case 2:
-   Pop();
-   break;
-case 3:
-   Display();
-   break;
-case 4:
-   Peep();
-   break;
-case 5:
-   Peek();
-   break;
-case 6:
-   Change();
-   break;
-default:
-   printf("invalid choice\n");
-}}
-else
-  break;
+{
+    ch=Menu();
+    if(ch!=7)
+    {
+        switch(ch)
+            {
+            case 1:
+                Push();
+                break;
+            case 2:
+                Pop();
+                break;
+            case 3:
+                Display();
+                break;
+            case 4:
+                Peep();
+                break;
+            case 5:
+                Peek();
+                break;
+            case 6:
+                Change();
+                break;
+            default:
+                printf("invalid choice\n");
+            }
+    }
+    else
+        break;
 }
 return 0;
 }
 
 //push
 void Push()
-{int item;
+{
+int item;
 printf("Enter the element to be push\n");
 scanf("%d",&item);
 if(isFull())
-printf("stack is full\n");
-else
-{top=top+1;
- s[top]=item;      
-}}
+    printf("stack is full\n");
+else{
+    top=top+1;
+    s[top]=item;      
+    }
+}
 
 //pop
 void Pop()
-{int item;
+{
+int item;
 if(isEmpty())
-printf("stack is empty\n");
-else
-{item=s[top];   
- top=top-1;
- printf("Deleted element:%d\n",item);
-}}
+    printf("stack is empty\n");
+else{
+    item=s[top];   
+    top=top-1;
+    printf("Deleted element:%d\n",item);
+    }
+}
 
 //display
 void Display()
-{if(isEmpty())
+{
+if(isEmpty())
     printf("stack is empty\n");
-else
-    {printf("Elements of stack:\n");
+else{
+    printf("Elements of stack:\n");
     for(int i=top;i>=0;i--)
         printf("%d ",s[i]);
-}}
+    }
+}
 
 //Peek
 void Peek()
