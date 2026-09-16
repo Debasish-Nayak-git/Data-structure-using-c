@@ -7,33 +7,29 @@ int isEmpty();
 int isFull();
 void Enqueue();
 void Dequeue();
-void Display();
+
 
 int main()
 {int ch;
     while(1)
-        {
-        ch=menu();
-        if(ch!=4)
-        {
-        switch(ch)
-        {
-        case 1:
-            Enqueue();
-            break;
-        case 2:
-            Dequeue();
-            break;
-        case 3:
-            Display();
-            break;
-        default:
-            printf("invalid choice\n");
-        }
-        }
-        else
-            break;
-        }
+        {ch=menu();
+            if(ch!=4){
+                switch(ch)
+                    {case 1:
+                        Enqueue();
+                        break;
+                    case 2:
+                        Dequeue();
+                        break;
+            case 3:
+   Display();
+   break;
+default:
+   printf("invalid choice\n");
+}}
+else
+  break;
+}
 return 0;
 }
 int isEmpty(){
@@ -46,10 +42,10 @@ int isFull(){
 }
 void Enqueue()
 {int item;
-printf("\nEnter the element to be insert:\n");
+printf("Enter the element to be insert:\n");
 scanf("%d",&item);
 if (isFull())
-    printf("\nQueue overflow\n");
+    printf("Queue overflow");
 else{
     if (isEmpty())
         rear=front=0;
@@ -61,9 +57,9 @@ else{
 void Dequeue()
 {
     if (isEmpty())
-        printf("\nQueue empty\n");
+        printf("Queue empty");
     else{
-        printf("\nDeleted element = %d\n",Qu[front]);
+        printf("Deleted element = %d\n",Qu[front]);
         if (rear==front)
             rear=front=-1;
         else
@@ -73,9 +69,9 @@ void Dequeue()
 void Display()
 {
 if (isEmpty())
-    printf("\nQueue empty\n");
+    printf("Queue empty");
 else{
-    printf("\nElements of queue:\n");
+    printf("Elements of queue");
     for (int i=front;i<=rear;i++)
         printf("%d ",Qu[i]);
 printf("\n");
