@@ -2,4 +2,7 @@ a.out
 **/.out
 *.o
 *.exe
+*.a
+*.so
+*.dylib
 *.zip
