@@ -115,13 +115,13 @@ Tran[0][0]=s[0][1];
 Tran[0][1]=s[0][0];
 Tran[0][2]=s[0][2];
 for( i=0;i<c;i++)
-{for(j=0;j<=s[0][2];j++)
+{for(j=0;j<=s[0][2];j++){
 if(s[j][1]==i)
 {k=k+1;
 Tran[k][0]=s[j][1];
 Tran[k][1]=s[j][0];
 Tran[k][2]=s[j][2];
-}
+}}
 }    
 }
 
@@ -129,14 +129,14 @@ Tran[k][2]=s[j][2];
 int creat_triplet(int mat[20][20],int r,int c,int s[20][3])
 {int i,j,t=0;
  for(i=0;i<r;i++)
-   {for (j=0;j<c;j++)
+   {for (j=0;j<c;j++){
        if(mat[i][j]!=0)
          { t=t+1;
            s[t][0]=i;
            s[t][1]=j;
            s[t][2]=mat[i][j];
          }
-    }
+    }}
   s[0][0]=r;
   s[0][1]=c;
   s[0][2]=t;
