@@ -18,12 +18,14 @@ void delete_at_head();
 void delete_at_tail();
 void search();
 void menu();
+void insert_at_pos(int input_data,int pos);
+void delete_at_pos(int pos);
 
 int main()
 {  
     while(1){
         menu();
-        int ch,i;
+        int ch,i,pos;
         printf("Enter your choice:");
         scanf("%d",&ch);
         switch(ch){
@@ -47,9 +49,21 @@ int main()
                 traverse();
                 break;
             case 6:
-                search();
+                printf("\nValue to input:\n");
+                scanf("%d",&i);
+                printf("\nEnter the position:\n");
+                scanf("%d",&pos);
+                insert_at_pos(i,pos);
                 break;
             case 7:
+                printf("\nEnter the position:\n");
+                scanf("%d",&pos);
+                delete_at_pos(pos);
+                break;
+            case 8:
+                search();
+                break;
+            case 9:
                 return 0;
             default:
                 printf("Invalid choice\n");
@@ -156,6 +170,55 @@ void menu(){
     printf("3.Delete at begin\n");
     printf("4.Delete at end\n");
     printf("5.Display\n");
-    printf("6.Search\n");
-    printf("7.Exit\n");
+    printf("6.Insert at position\n");
+    printf("7.Delete at position\n");
+    printf("8.Search\n");
+    printf("9.Exit\n");
+}
+void insert_at_pos(int input_data,int pos){
+    struct Node *node=create_node(input_data);
+    if (pos==1){
+        insert_at_head(input_data);
+    }
+    else{
+        struct Node *temp=head;
+        int i=1;
+        while(i<pos-1 && temp!=NULL){
+            temp=temp->next;
+            i++;
+        }
+        if (temp==NULL){
+            printf("\n invalid position\n");
+            return;
+        }
+        node->next=temp->next;
+        temp->next=node;
+        printf("\n %d inserted at position %d\n",input_data,pos);
+    }
+}
+void delete_at_pos(int pos){
+    if(head==NULL){
+        printf("List is empty\n");
+        return;
+    }
+    else{
+        if(pos==1){
+            delete_at_head();
+            return;
+        }
+        struct Node *temp=head;
+        struct Node *del=NULL;
+        int i=1;
+        while(i<pos-1 && temp->next !=NULL){
+            temp=temp->next;
+            i++;
+        }
+        if (temp->next==NULL){
+            printf("\n invalid position\n");
+            return;
+        }
+        del=temp->next;
+        printf("\n%d deleted from %d \n",del->data,pos);
+        temp->next=del->next;
+    }
 }
