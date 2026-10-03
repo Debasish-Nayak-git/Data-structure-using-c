@@ -147,7 +147,7 @@ void delete_at_tail(){
         printf("List is empty\n");
         return;
     }
-    if (head->next==NULL)
+    if (head->next==head)
         head=tail=NULL;
     else{
         while(temp->next!=tail){
