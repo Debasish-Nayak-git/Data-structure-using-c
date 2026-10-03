@@ -12,9 +12,11 @@ struct Node *rear=NULL;
 //functions for required operations
 struct Node* create_node(int input_data);
 void traverse();
-void insert(int input_data);
-void delete();
+void enqueue(int input_data);
+void dequeue();
 void search();
+void peek_rear();
+void peek_front();
 void menu();
 
 int main()
@@ -28,12 +30,10 @@ int main()
             case 1:
                 printf("Value to input:");
                 scanf("%d",&i);
-                insert(i);
+                enqueue(i);
                 break;
             case 2:
-                printf("Value to input:");
-                scanf("%d",&i);
-                delete(i);
+                dequeue();
                 break;
             case 3:
                 traverse();
@@ -42,6 +42,12 @@ int main()
                 search();
                 break;
             case 5:
+                peek_front();
+                break;
+            case 6:
+                peek_rear();
+                break;
+            case 7:
                 return 0;
             default:
                 printf("Invalid choice\n");
@@ -74,7 +80,7 @@ void traverse(){
     printf("\n");
 }
 
-void insert(int input_data){
+void enqueue(int input_data){
     struct Node *new_node=create_node(input_data);
     if(new_node==NULL) return;
     if(rear==NULL)
@@ -83,7 +89,7 @@ void insert(int input_data){
         rear->next=new_node;
     rear=new_node;
 }
-void delete(){
+void dequeue(){
     struct Node *deleted=front;
     if (front==NULL){
         printf("List is empty\n");
@@ -105,7 +111,7 @@ void search(){
         return;
     }
     struct Node *temp=front;
-    int i=0;
+    int i=1;
     while(temp!=NULL){
         if(temp->data==target){
             printf("%d found at %d position in the list\n",target,i);
@@ -121,5 +127,21 @@ void menu(){
     printf("2.Delete \n");
     printf("3.Display\n");
     printf("4.Search\n");
-    printf("5.Exit\n");
+    printf("5.peek front\n");
+    printf("6.peek rear\n");
+    printf("7.Exit\n");
+}
+void peek_front(){
+    if(front==NULL){
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Front element is %d\n",front->data);
+}
+void peek_rear(){
+    if(rear==NULL){
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Rear element is %d\n",rear->data);
 }
