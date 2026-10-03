@@ -12,8 +12,10 @@ struct Node *rear=NULL;
 //functions for required operations
 struct Node* create_node(int input_data);
 void traverse();
+void insert_at_front(int input_data);
 void insert_at_rear(int input_data);
 void delete_at_front();
+void delete_at_rear();
 void search();
 void menu();
 void peek_rear();
@@ -30,24 +32,32 @@ int main()
             case 1:
                 printf("Value to input:");
                 scanf("%d",&i);
-                insert_at_rear(i);
+                insert_at_front(i);
                 break;
             case 2:
-                delete_at_front();
+                printf("Value to input:");
+                scanf("%d",&i);
+                insert_at_rear(i);
                 break;
             case 3:
-                traverse();
+                delete_at_front();
                 break;
             case 4:
-                peek_front();
+                delete_at_rear();
                 break;
             case 5:
-                peek_rear();
+                traverse();
                 break;
             case 6:
-                search();
+                peek_front();
                 break;
             case 7:
+                peek_rear();
+                break;
+            case 8:
+                search();
+                break;
+            case 9:
                 return 0;
             default:
                 printf("Invalid choice\n");
@@ -81,6 +91,22 @@ void traverse(){
     printf("\n");
 }
 
+void insert_at_front(int input_data){
+    struct Node *new_node=create_node(input_data);
+    if(new_node==NULL) return;
+    new_node->next=front;
+    if(front==NULL){
+        rear=front=new_node;
+        rear->next=front;
+    }
+    else{
+        new_node->next=front;
+        front=new_node;
+        rear->next=front;
+    }
+    
+}
+
 void insert_at_rear(int input_data){
     struct Node *new_node=create_node(input_data);
     if(new_node==NULL) return;
@@ -109,7 +135,24 @@ void delete_at_front(){
     printf("Deleted element is %d from begin\n",deleted->data);
     free(deleted);
 }
-
+void delete_at_rear(){
+    struct Node *deleted=rear,*temp=front;
+    if (rear==NULL){
+        printf("List is empty\n");
+        return;
+    }
+    if (front->next==front)
+        front=rear=NULL;
+    else{
+        while(temp->next!=rear){
+            temp=temp->next;
+        }
+        rear=temp;
+        rear->next=front;
+    }
+    printf("Deleted element is %d from end\n",deleted->data);
+    free(deleted);
+}
 void search(){
     int target;
     printf("enter the element to search");
@@ -131,13 +174,15 @@ void search(){
     printf("Element %d not found in the list\n",target);
 }
 void menu(){
-    printf("1.Insert at rear\n");
-    printf("2.Insert at front\n");
-    printf("3.Display\n");
-    printf("4.peek front\n");
-    printf("5.peek rear\n");
-    printf("6.Search\n");
-    printf("7.Exit\n");
+    printf("1.Insert at front\n");
+    printf("2.Insert at rear\n");
+    printf("3.Delete at front\n");
+    printf("4.Delete at rear\n");
+    printf("5.Display\n");
+    printf("6.peek front\n");
+    printf("7.peek rear\n");
+    printf("8.Search\n");
+    printf("9.Exit\n");
 }
 void peek_front(){
     if(front==NULL){
